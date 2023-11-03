@@ -11,7 +11,7 @@ form.addEventListener('submit', async function(e){
             password: form.password.value
         })
     );
-    if (response.message){
+    if (!response.token){
         document.querySelector('#contact p').textContent = "Erreur dans le mot de passe ou l'identifiant";
     }else{
         localStorage.setItem('token', response.token);

@@ -33,8 +33,6 @@ async function api(url,  method, data = null, auth = false, jsonHeader = true) {
     return json;
 }
 
-
-
 function createProjectHome(id, name, img, category){
     const projectDOM = document.createElement('figure');
     projectDOM.dataset.category = category;
@@ -62,7 +60,7 @@ function createProjectModal(id, img){
     projectImgDOM.src = img;
     
     const btnRemove = document.createElement('button');
-    btnRemove.textContent = 'Supprimer';
+    btnRemove.innerHTML = '<i class="fas fa-trash-alt"></i>';
     btnRemove.addEventListener('click', async function(e){
         let suppression = await api('http://localhost:5678/api/works/' + id, 'DELETE', null, true);
         if (suppression === 204){   
@@ -104,6 +102,9 @@ function createCategoryFilter(id, name, active = false){
     document.querySelector('.filters').appendChild(categoryDOM);
 
     if(isConnected){
+        if (id == 0) {
+            return;
+        }
         let option =  document.createElement('option');
         option.value = id;
         option.textContent = name;
@@ -114,6 +115,7 @@ function createCategoryFilter(id, name, active = false){
 
 function openModal(elem){
     if (document.querySelector('.modal.active')) {
+        document.querySelector('.backdrop').remove();
         document.querySelector('.modal.active').classList.remove('active');
     }
     document.getElementById(elem).classList.add('active');
@@ -135,11 +137,11 @@ function closeModal(){
 
 
 export {
+    isConnected,
     api,
     createProjectHome,
     createProjectModal,
     createCategoryFilter,
     openModal, 
-    closeModal,
-    isConnected
+    closeModal
 };
