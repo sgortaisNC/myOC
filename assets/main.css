@@ -1,0 +1,54 @@
+.filters {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 40px;
+}
+.filters button {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border: 2px solid #1D6154;
+  padding: 9px 20px;
+  background: none;
+  border-radius: 50px;
+  cursor: pointer;
+}
+.filters button.active {
+  background: #1D6154;
+  color: #fff;
+}
+
+.modal {
+  inset: 0;
+  position: fixed;
+  z-index: 2;
+  display: none;
+  place-items: center;
+}
+.modal.active {
+  display: grid;
+}
+.modal .modal-content {
+  border-radius: 16px;
+  padding: 15px;
+  background: #fff;
+  width: 400px;
+}
+
+.backdrop {
+  position: fixed;
+  z-index: -1;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.projectsToRemove {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+.projectsToRemove img {
+  max-width: 100%;
+}/*# sourceMappingURL=main.css.map */
